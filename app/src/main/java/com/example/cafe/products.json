@@ -1,0 +1,59 @@
+{
+  "products":
+  {
+    "p1" :
+    {
+      "img": "",
+      "title": "Burger",
+      "price": "£2.50"
+    },
+    "p2" :
+    {
+      "img": "",
+      "title": "Pizza",
+      "price": "£6.50"
+    },
+    "p3" :
+    {
+      "img": "",
+      "title": "Chicken Nuggets",
+      "price": "£2.20"
+    },
+    "p4" :
+    {
+      "img": "",
+      "title": "Fries",
+      "price": "£1.50"
+    },
+    "p5" :
+    {
+      "img": "",
+      "title": "Curly Fries",
+      "price": "£2.00"
+    },
+    "p6" :
+    {
+      "img": "",
+      "title": "Slice of Cake",
+      "price": "£2.50"
+    },
+    "p7" :
+    {
+      "img": "",
+      "title": "Can of Pop",
+      "price": "£1.00"
+    },
+    "p8" :
+    {
+      "img": "",
+      "title": "Hot Drink",
+      "price": "2.75"
+    },
+    "p9" :
+    {
+      "img": "",
+      "title": "Milkshake",
+      "price": "4.00"
+    }
+  }
+}
