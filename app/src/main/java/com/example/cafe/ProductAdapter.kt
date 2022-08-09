@@ -7,8 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import java.lang.StringBuilder
 
 class ProductAdapter(private var productList: MutableList<Product>):RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -21,9 +23,8 @@ class ProductAdapter(private var productList: MutableList<Product>):RecyclerView
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int){
         Picasso.get().load(productList[position].img)
             .into(holder.productImage)
-        holder.productTitle.text=(productList[position].title)
+        holder.productTitle.text=StringBuilder("£").append(productList[position].title)
         holder.productPrice.text=(productList[position].price)
-
     }
 
     override fun getItemCount(): Int{

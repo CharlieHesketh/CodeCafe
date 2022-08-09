@@ -1,6 +1,5 @@
 package com.example.cafe
 
-import android.app.ActionBar
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -58,16 +57,15 @@ class HomeFragment : Fragment() {
         }
         reference?.addValueEventListener(firebaseListener)
 
-
         recyclerView = view.findViewById(R.id.recycler_view)
         recyclerView?.setHasFixedSize(true)
         recyclerView?.layoutManager = GridLayoutManager(context, 2,
         GridLayoutManager.VERTICAL,
         false)
+        recyclerView?.addItemDecoration(ItemDecoration())
 
         adapter = ProductAdapter(productList)
         recyclerView?.adapter = adapter
-
 
         view.findViewById<Button>(R.id.btn_log_out).setOnClickListener{
             Firebase.auth.signOut()
@@ -76,6 +74,4 @@ class HomeFragment : Fragment() {
         }
         return view
     }
-
-
 }
