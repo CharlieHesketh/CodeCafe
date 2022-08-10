@@ -14,6 +14,7 @@
         android:weightSum="16">
 
         <ImageView
+            android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
@@ -21,6 +22,7 @@
             android:src="@drawable/ic_baseline_navigate_before_24" />
 
         <TextView
+            android:id="@+id/txtOrderTotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

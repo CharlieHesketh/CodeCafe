@@ -1,5 +1,6 @@
 package com.example.cafe
 
+import android.content.Intent
 import android.media.metrics.Event
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,10 +15,12 @@ import com.example.cafe.model.CartModel
 import com.example.cafe.model.ProductModel
 import com.example.cafe.utils.ItemDecoration
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -125,6 +128,10 @@ class MainActivity : AppCompatActivity(), FragmentNavigation, ProductLoadListene
         recycler_food.layoutManager = gridLayoutManager
         recycler_food.setHasFixedSize(true)
         recycler_food.addItemDecoration(ItemDecoration())
+
+        btn_Cart.setOnClickListener{
+            startActivity(Intent(this,CartActivity::class.java))
+        }
     }
 
     override fun onProductLoadSuccess(productModelList: List<ProductModel>?) {

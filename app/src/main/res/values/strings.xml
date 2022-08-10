@@ -10,5 +10,7 @@
     <string name="checkout">Checkout</string>
     <string name="food_menu">FOOD MENU</string>
     <string name="order_total">ORDER TOTAL</string>
-    <string name="_1">1</string>
+    <string name="product_description">product description</string>
+    <string name="product_price">Product Price</string>
+    <string name="_1">£1</string>
 </resources>
