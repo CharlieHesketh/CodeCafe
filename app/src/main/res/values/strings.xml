@@ -9,4 +9,6 @@
     <string name="menu">MENU</string>
     <string name="checkout">Checkout</string>
     <string name="food_menu">FOOD MENU</string>
+    <string name="order_total">ORDER TOTAL</string>
+    <string name="_1">1</string>
 </resources>
