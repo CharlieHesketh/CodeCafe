@@ -1,4 +1,4 @@
-package com.example.cafe
+package com.example.cafe.model
 
 class ProductModel {
     var key: String? = null

@@ -1,4 +1,4 @@
-package com.example.cafe
+package com.example.cafe.utils
 
 import android.graphics.Rect
 import android.view.View

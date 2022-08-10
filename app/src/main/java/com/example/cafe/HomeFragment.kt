@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cafe.adapter.ProductAdapter
+import com.example.cafe.model.Product
+import com.example.cafe.utils.ItemDecoration
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
