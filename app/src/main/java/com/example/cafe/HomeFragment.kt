@@ -72,6 +72,12 @@ class HomeFragment : Fragment() {
             var navLogin = activity as FragmentNavigation
             navLogin.navigateFrag(LoginFragment(), addToStack = false)
         }
+//        view.findViewById<Button>(R.id.btn_Cart).setOnClickListener{
+//            Firebase.auth.signOut()
+//            var navLogin = activity as FragmentNavigation
+//            navLogin.navigateFrag(MainActivity(), addToStack = true)
+//        }
+
         return view
     }
 }
