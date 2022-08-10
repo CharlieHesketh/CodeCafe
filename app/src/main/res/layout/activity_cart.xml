@@ -62,4 +62,14 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/panel"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_log_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/log_out" />
+
 </RelativeLayout>

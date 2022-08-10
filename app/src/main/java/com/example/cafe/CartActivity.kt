@@ -2,21 +2,47 @@ package com.example.cafe
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cafe.adapter.MyCartAdapter
+import com.example.cafe.event.UpdateCart
 import com.example.cafe.listener.CartLoadListener
 import com.example.cafe.model.CartModel
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_cart.*
+import kotlinx.android.synthetic.main.activity_main.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import java.lang.StringBuilder
 
 class CartActivity : AppCompatActivity(), CartLoadListener {
     var cartLoadListener:CartLoadListener?=null
+
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if(EventBus.getDefault().hasSubscriberForEvent(UpdateCart::class.java))
+            EventBus.getDefault().removeStickyEvent(UpdateCart::class.java)
+        EventBus.getDefault().unregister(this)
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true )
+    fun onUpdateCart(event: UpdateCart){
+        loadCartFromFirebase()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +80,7 @@ class CartActivity : AppCompatActivity(), CartLoadListener {
         recycler_cart!!.layoutManager = layoutManager
         recycler_cart!!.addItemDecoration(DividerItemDecoration(this, layoutManager.orientation))
         btnBack!!.setOnClickListener{finish()}
-    }
+        }
 
     override fun onLoadCartSuccess(cartModelList: List<CartModel>) {
         var total = 0.0

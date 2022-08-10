@@ -4,6 +4,7 @@ import android.content.Intent
 import android.media.metrics.Event
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -27,7 +28,6 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 class MainActivity : AppCompatActivity(), FragmentNavigation, ProductLoadListener, CartLoadListener {
-
     lateinit var productLoadListener: ProductLoadListener
     lateinit var cartLoadListener: CartLoadListener
     private lateinit var fAuth: FirebaseAuth
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(), FragmentNavigation, ProductLoadListene
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true )
-    public fun onUpdateCart(event:UpdateCart){
+    fun onUpdateCart(event:UpdateCart){
         totalCartFromFirebase()
     }
 
@@ -56,19 +56,21 @@ class MainActivity : AppCompatActivity(), FragmentNavigation, ProductLoadListene
         loadProductFromFirebase()
         totalCartFromFirebase()
 
-//        fAuth = Firebase.auth
-//
-//        val currentUser = fAuth.currentUser
-//
-//        if(currentUser != null){
-//            supportFragmentManager.beginTransaction()
-//                .add(R.id.container, HomeFragment()).addToBackStack(null)
-//                .commit()
-//        }else {
-//            supportFragmentManager.beginTransaction()
-//                .add(R.id.container, LoginFragment())
-//                .commit()
-//        }
+
+        fAuth = Firebase.auth
+
+        val currentUser = fAuth.currentUser
+
+        if(currentUser != null){
+            supportFragmentManager.beginTransaction()
+                .add(R.id.container, HomeFragment()).addToBackStack(null)
+                .commit()
+        }else {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.container, LoginFragment())
+                .commit()
+        }
+
     }
 
     private fun totalCartFromFirebase() {
@@ -132,6 +134,12 @@ class MainActivity : AppCompatActivity(), FragmentNavigation, ProductLoadListene
         btn_Cart.setOnClickListener{
             startActivity(Intent(this,CartActivity::class.java))
         }
+
+        btn_log_out.setOnClickListener{
+            Firebase.auth.signOut()
+            navigateFrag(LoginFragment(), addToStack = false)
+            btn_log_out.alpha= 0F
+        }
     }
 
     override fun onProductLoadSuccess(productModelList: List<ProductModel>?) {
@@ -164,4 +172,6 @@ class MainActivity : AppCompatActivity(), FragmentNavigation, ProductLoadListene
     override fun onLoadCartFailed(message: String?) {
         Toast.makeText(this,message!!,Toast.LENGTH_LONG).show()
     }
+
+
 }

@@ -84,7 +84,7 @@ class LoginFragment : Fragment() {
             {
                 if (username.text.toString().matches(Regex("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"))){
 
-//                    Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Login Successful", Toast.LENGTH_LONG).show()
                     firebaseSignIn()
 
                 }else(
