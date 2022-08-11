@@ -27,8 +27,6 @@ class RegisterFragment : Fragment() {
     private lateinit var cnfPassword: EditText
     private lateinit var fAuth: FirebaseAuth
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
